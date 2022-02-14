@@ -13,7 +13,7 @@ function quoteLoader() {
         document.getElementById("quote").innerHTML = '"' + data.contents.quotes[0].quote + '"';
 
     }).catch(err => {
-        console.log("API Error")
+        console.log("API Error.")
     });
 }
 
