@@ -1,3 +1,21 @@
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+ ::-webkit-scrollbar-track {
+    position: hidden;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: white;
+    max-height: 4px;
+    border-radius: 3px;
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: rgb(172, 172, 172);
+}
+
 @font-face {
     font-family: Mainfont;
     src: url(font.otf);
@@ -25,6 +43,11 @@
 
 body {
     font-family: Secondfont;
+    overflow-y: hidden;
+}
+
+body:hover {
+    overflow-y: scroll;
 }
 
 #quote {
@@ -33,6 +56,16 @@ body {
 
 #tasks {
     font-family: ThirdFont !important;
+    /* border: 1px solid; */
+    border-color: white;
+    min-height: 100px;
+    max-height: 100px;
+    max-width: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: justify;
+    margin: 3px;
+    ;
 }
 
 #reference {
@@ -44,4 +77,43 @@ body {
     padding-left: 1%;
     padding-bottom: 1%;
     font-size: large;
+}
+
+#description {
+    position: fixed;
+    display: hidden;
+    bottom: 0;
+    left: 0;
+    font-family: FourthFont;
+    color: azure;
+    padding-left: 1%;
+    padding-right: 3%;
+    font-size: small;
+}
+
+#add {
+    font-family: ThirdFont;
+    font-size: small;
+    height: 20px;
+    width: 35px;
+    left: 165px;
+    position: relative;
+    padding-bottom: 1px;
+    border: 1px solid;
+    border-color: white;
+    color: white;
+    margin: 0%;
+}
+
+#add:hover {
+    font-family: ThirdFont;
+    font-size: small;
+    height: 20px;
+    width: 35px;
+    padding-bottom: 1px;
+    border: 1px solid;
+    border-color: white;
+    background-color: white;
+    color: black;
+    margin: 0%;
 }

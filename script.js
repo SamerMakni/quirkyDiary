@@ -1,3 +1,14 @@
+function colorizer(str) {
+    let red = parseInt(str.substr(1, 2), 16);
+    let green = parseInt(str.substr(3, 2), 16);
+    let blue = parseInt(str.substr(5, 2), 16);
+    let intensity = red * 0.299 + green * 0.587 + blue * 0.114;
+    return intensity > 168 ? true : false;
+}
+
+
+
+
 function dateLoader() {
     let dt = new Date();
     document.getElementById("time").innerHTML = dt.toDateString();
@@ -42,7 +53,10 @@ function backgroundLoader() {
         link = "https://open.smk.dk/artwork/image/" + link.toLowerCase();
         document.getElementById("reference").innerHTML = `<a href="${link}" target="_blank">${text}</a>`;
         body.style.backgroundImage = "url('" + data.items[random].image_thumbnail + "')";
-
+        if (colorizer(data.items[random].colors[1]) == false)
+            document.getElementById("leftSection").classList.add("text-white");
+        if (colorizer(data.items[random].colors[2]) == false)
+            document.getElementById("rightSection").classList.add("text-white");
 
 
     }).catch(err => {
@@ -50,6 +64,10 @@ function backgroundLoader() {
     });
 }
 
+document.getElementById("add").addEventListener("click", function() {
+    document.getElementById("tasks").innerHTML += '<br> <input class="form-check-input appearance-none h-3 w-3 border border-gray-300 rounded-sm bg-gray-300 checked:bg-black checked:border-black focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"   type="checkbox" value="" id="flexCheckDefault6">    <label class="form-check-label inline-block" for="flexCheckDefault6"> test  </label>';
+
+})
 
 window.onload = function() {
     backgroundLoader();
