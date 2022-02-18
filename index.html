@@ -17,9 +17,21 @@
 
 <body class="flex mx-64 my-5" style="background-image: url('img_girl.jpg')" id="myBody">
 
+    <div id="myModal" class="hidden">
+        <div class="modal-content" id="modalContent">
+            <p>
+                <input type="text" class="inputer" text="Add Task" id="input">
+                <button id="accept" class="">OK</button>
+            </p>
+            <p id="error">
+            </p>
+
+        </div>
+
+    </div>
     <div class="w-1/3 p-3 bg-gray-100 bg-opacity-60" id="leftSection">
 
-        <p class="text-4xl">
+        <p class="text-4xl" onselectstart="return false">
             My <br>Quirky <br> Diary
         </p>
         <br>
