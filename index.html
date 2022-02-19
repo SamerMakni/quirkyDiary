@@ -17,7 +17,7 @@
 
 <body class="flex mx-64 my-5" style="background-image: url('img_girl.jpg')" id="myBody">
 
-    <div id="myModal" class="hidden">
+    <div id="myModal" class="">
         <div class="modal-content" id="modalContent">
             <p>
                 <input type="text" class="inputer" text="Add Task" id="input">
@@ -55,23 +55,12 @@
         <h2></h2>
         <p> Today's Tasks</p>
         <div class="p-2" id="tasks">
-            <input class="form-check-input appearance-none h-3 w-3 border border-gray-300 rounded-sm bg-gray-300 checked:bg-black checked:border-black focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                type="checkbox" value="" id="flexCheckDefault" onchange="crosser()">
-            <label class="form-check-label inline-block" for="flexCheckDefault">
-                A tiring day
+            <label class="form-check-label inline-block">
+                <input class="form-check-input appearance-none h-3 w-3 border border-gray-300 rounded-sm bg-gray-300 checked:bg-black checked:border-black focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                    type="checkbox">
+                    <span> A tiring day </span>
             </label>
             <br>
-            <input class="form-check-input appearance-none h-3 w-3 border border-gray-300 rounded-sm bg-gray-300 checked:bg-black checked:border-black focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                type="checkbox" value="" id="flexCheckDefault1">
-            <label class="form-check-label inline-block" for="flexCheckDefault1">
-                Susumo Yokota
-            </label>
-            <br>
-            <input class="form-check-input appearance-none h-3 w-3 border border-gray-300 rounded-sm bg-gray-300 checked:bg-black checked:border-black focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                type="checkbox" value="" id="flexCheckDefault2">
-            <label class="form-check-label inline-block" for="flexCheckDefault2">
-                Zheani
-            </label>
         </div>
         <button id="add">
             Add
@@ -86,6 +75,7 @@
 
     </p>
 
+    <div id="loading" class="border-black opacity-100 transition transition-opacity duration-1000 ease-in-out"></div>
 
 
 </body>

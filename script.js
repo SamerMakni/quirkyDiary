@@ -73,24 +73,37 @@ function backgroundLoader() {
 }
 
 document.getElementById("add").addEventListener("click", function() {
-    document.getElementById("myModal").classList.remove("hidden");
-    document.getElementById("myModal").classList.add("block");
+    document.getElementById("myModal").style.visibility = "visible";
+    document.getElementById("myModal").style.opacity = 1;
+
+
+
     document.getElementById("error").innerHTML = "";
     errr = false;
 })
 
-window.onload = function() {
-    backgroundLoader();
-    dateLoader();
-    quoteLoader();
-}
 window.onclick = function(event) {
     if (event.target == document.getElementById("myModal")) {
-        document.getElementById("myModal").classList.add("hidden");
-
+        document.getElementById("myModal").style.visibility = "hidden";
+        document.getElementById("myModal").style.opacity = 0;
 
     }
 }
+
+// function onReady(callback) {
+//     var intervalId = window.setInterval(function() {
+//         window.clearInterval(intervalId);
+//         callback.call(this);
+
+//     }, 1000);
+// }
+
+// function setVisible(selector, visible) {
+//     document.querySelector(selector).style.display = visible ? 'block' : 'none';
+// }
+
+
+
 let errr = false;
 
 document.getElementById("accept").addEventListener("click", function() {
@@ -102,9 +115,35 @@ document.getElementById("accept").addEventListener("click", function() {
 
 
     } else {
-        document.getElementById("tasks").innerHTML += '<br> <input class="form-check-input appearance-none h-3 w-3 border border-gray-300 rounded-sm bg-gray-300 checked:bg-black checked:border-black focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"   type="checkbox" value="" id="flexCheckDefault' + i + '">    <label class="form-check-label inline-block" for="flexCheckDefault' + i + '"> ' + newTask + ' </label>';
+        let labeler = document.createElement("br");
+        let label = document.createElement("label");
+        label.classList.add("form-check-label", "inline-block");
+        let inputer = document.createElement("input", );
+        inputer.setAttribute("type", "checkbox");
+        let spaner = document.createElement("span");
+        spaner.innerText = newTask;
+        inputer.classList.add("form-check-input", "appearance-none", "h-3", "w-3", "border", "border-gray-300", "rounded-sm", "bg-gray-300", "checked:bg-black", "checked:border-black", "focus:outline-none", "transition", "duration-200", "mt-1", "align-top", "bg-no-repeat", "bg-center", "bg-contain", "float-left", "mr-2", "cursor-pointer");
+        label.appendChild(inputer);
+        label.appendChild(spaner);
+        document.getElementById("tasks").appendChild(label);
+        document.getElementById("tasks").append(labeler);
         i++;
-        document.getElementById("myModal").classList.add("hidden");
+        document.getElementById("myModal").style.visibility = "hidden";
+        document.getElementById("myModal").style.opacity = 0;
         console.log(i);
     }
 });
+
+setTimeout(function() {
+    document.getElementById("loading").classList.add("opacity-0");
+}, 1500);
+setTimeout(function() {
+    document.getElementById("loading").style.display = "none";
+}, 3000);
+
+window.onload = function() {
+    backgroundLoader();
+    dateLoader();
+    quoteLoader();
+
+}

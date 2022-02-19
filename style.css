@@ -1,3 +1,7 @@
+* {
+    -webkit-font-smoothing: antialliased;
+}
+
 ::-webkit-scrollbar {
     width: 4px;
 }
@@ -51,7 +55,10 @@
     height: 100%;
     overflow: hidden;
     background-color: rgb(100, 100, 1);
-    background-color: rgba(26, 24, 24, 0.2);
+    background-color: rgba(26, 24, 24, 0.6);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
 }
 
 
@@ -200,4 +207,22 @@ body {
     font-size: x-small !important;
     color: red;
     overflow: hidden;
+}
+
+#loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0);
+    background-image: url("editor-2.1s-47px.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.form-check-input:checked+span {
+    text-decoration: line-through;
 }
