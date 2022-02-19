@@ -152,3 +152,19 @@ document.getElementById("refImage").addEventListener("click", function() {
 
     location.reload()
 });
+document.getElementById("showImage").addEventListener("mouseover", function() {
+    console.log("hello");
+    document.getElementById("leftSection").style.visibility = "hidden";
+    document.getElementById("leftSection").style.opacity = 0;
+    document.getElementById("rightSection").style.visibility = "hidden";
+    document.getElementById("rightSection").style.opacity = 0;
+
+})
+document.getElementById("showImage").addEventListener("mouseleave", function() {
+    console.log("hello");
+    document.getElementById("leftSection").style.visibility = "visible";
+    document.getElementById("leftSection").style.opacity = 1;
+    document.getElementById("rightSection").style.visibility = "visible";
+    document.getElementById("rightSection").style.opacity = 1;
+
+});

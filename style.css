@@ -244,3 +244,10 @@ body {
     right: 1%;
     font-family: FifthFont;
 }
+
+#leftSection,
+#rightSection {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.4s, visibility 0.4s;
+}
