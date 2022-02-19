@@ -234,6 +234,18 @@ body {
     bottom: 5%;
     right: 1%;
     font-family: FifthFont;
+    cursor: pointer;
+}
+
+#refImage:hover {
+    position: absolute;
+    color: rgb(184, 184, 184);
+    font-size: medium;
+    bottom: 5%;
+    right: 1%;
+    font-family: FifthFont;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 #showImage {
@@ -243,6 +255,16 @@ body {
     bottom: 2%;
     right: 1%;
     font-family: FifthFont;
+}
+
+#showImage:hover {
+    position: absolute;
+    color: rgb(184, 184, 184);
+    font-size: medium;
+    bottom: 2%;
+    right: 1%;
+    font-family: FifthFont;
+    text-decoration: underline;
 }
 
 #leftSection,
