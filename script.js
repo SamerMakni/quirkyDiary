@@ -147,3 +147,8 @@ window.onload = function() {
     quoteLoader();
 
 }
+
+document.getElementById("refImage").addEventListener("click", function() {
+
+    location.reload()
+});

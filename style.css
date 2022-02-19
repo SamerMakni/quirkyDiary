@@ -226,3 +226,21 @@ body {
 .form-check-input:checked+span {
     text-decoration: line-through;
 }
+
+#refImage {
+    position: absolute;
+    color: white;
+    font-size: medium;
+    bottom: 5%;
+    right: 1%;
+    font-family: FifthFont;
+}
+
+#showImage {
+    position: absolute;
+    color: white;
+    font-size: medium;
+    bottom: 2%;
+    right: 1%;
+    font-family: FifthFont;
+}
