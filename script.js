@@ -60,10 +60,21 @@ function backgroundLoader() {
         }
         document.getElementById("modalContent").classList.add("bg-[" + data.items[random].colors[3] + "]");
         document.getElementById("input").classList.add("bg-[" + data.items[random].colors[3] + "]");
+        document.getElementById("modalContent2").classList.add("bg-[" + data.items[random].colors[3] + "]");
+        document.getElementById("noteDescription").classList.add("bg-[" + data.items[random].colors[3] + "]");
+        document.getElementById("inputNote").classList.add("bg-[" + data.items[random].colors[3] + "]");
+
         if (colorizer(data.items[random].colors[3]) == false) {
             document.getElementById("input").classList.add("border-white");
             document.getElementById("input").classList.add("text-white");
             document.getElementById("accept").classList.add("text-white");
+            document.getElementById("inputNote").classList.add("border-white");
+            document.getElementById("inputNote").classList.add("text-white");
+            document.getElementById("noteDescription").style.borderColor = "white";
+            document.getElementById("noteDescription").classList.add("text-white");
+            document.getElementById("acceptNote").classList.add("text-white");
+            document.getElementById("myModal2").classList.add("text-white");
+
 
         }
 
@@ -105,6 +116,7 @@ window.onclick = function(event) {
 
 
 let errr = false;
+let errr2 = false;
 
 document.getElementById("accept").addEventListener("click", function() {
 
@@ -174,3 +186,12 @@ document.getElementById("addNote").addEventListener("click", function() {
     document.getElementById("myModal2").style.opacity = 1;
 
 })
+
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById("myModal2")) {
+        document.getElementById("myModal2").style.visibility = "hidden";
+        document.getElementById("myModal2").style.opacity = 0;
+
+    }
+}

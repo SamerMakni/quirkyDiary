@@ -82,11 +82,10 @@
 
 #modalContent2 {
     font-family: ThirdFont;
-    background-color: #FFFFFF;
     margin: auto;
-    padding: 20px;
+    padding: 10px;
     border: 0px solid #888;
-    width: 30%;
+    width: 28%;
     height: fit-content;
     overflow-y: hidden;
     max-height: fit-content;
@@ -104,8 +103,15 @@
     max-height: 63px;
 }
 
-.inputer,
 .noteAdd {
+    font-family: FourthFont;
+    border: 1px solid;
+    height: 20px;
+    min-width: 100%;
+    border-color: rgb(0, 0, 0);
+}
+
+.inputer {
     font-family: FourthFont;
     border: 1px solid;
     height: 20px;
@@ -117,8 +123,8 @@
     font-family: FourthFont;
     border: 1px solid;
     max-height: 200px;
-    min-width: 90%;
-    border-color: #000;
+    min-width: 100%;
+    border-color: rgb(0, 0, 0);
 }
 
 
@@ -233,6 +239,8 @@ body {
     font-size: small;
     height: 20px;
     width: 35px;
+    left: 91%;
+    position: absolute;
     border: 1px solid;
     /* border-color: white;
     color: white; */
