@@ -192,9 +192,23 @@ document.body.onclick = function(event) {
     if (event.target == document.getElementById("myModal2")) {
         document.getElementById("myModal2").style.visibility = "hidden";
         document.getElementById("myModal2").style.opacity = 0;
+        document.getElementById("error2").innerHTML = "";
+        errr2 = false;
+
+
     }
 }
 
-document.getElementById("addNote").addEventListener("click", function() {
-    document.getElementById("inputeNote")
+document.getElementById("acceptNote").addEventListener("click", function() {
+    let noteValue = document.getElementById("inputNote").value;
+    if (noteValue.length == 0) {
+        if (errr2 == false) document.getElementById("error2").innerHTML = "No title entered";
+        errr2 = true;
+    } else {
+        document.getElementById("notes").innerHTML += document.getElementById("inputNote").value + "<br>";
+        document.getElementById("myModal2").style.visibility = "hidden";
+        document.getElementById("myModal2").style.opacity = 0;
+        errr2 = false;
+
+    }
 })
