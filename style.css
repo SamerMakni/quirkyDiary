@@ -89,6 +89,7 @@
     height: fit-content;
     overflow-y: hidden;
     max-height: fit-content;
+    overflow: hidden;
 }
 
 .modal-content {
@@ -125,6 +126,7 @@
     max-height: 200px;
     min-width: 100%;
     border-color: rgb(0, 0, 0);
+    resize: none;
 }
 
 
@@ -321,11 +323,19 @@ body {
     margin: 0%;
 }
 
-#error,
+#error {
+    font-size: x-small !important;
+    color: red;
+    overflow: hidden;
+    position: absolute;
+}
+
 #error2 {
     font-size: x-small !important;
     color: red;
     overflow: hidden;
+    position: absolute;
+    top: 53%;
 }
 
 #loading {
@@ -399,4 +409,10 @@ body {
     max-height: fit-content;
     position: relative;
     height: fit-content;
+}
+
+#input,
+#inputNote,
+#noteDescription:focus {
+    outline: none !important;
 }
