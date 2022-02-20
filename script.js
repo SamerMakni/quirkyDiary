@@ -188,10 +188,13 @@ document.getElementById("addNote").addEventListener("click", function() {
 })
 
 
-window.onclick = function(event) {
+document.body.onclick = function(event) {
     if (event.target == document.getElementById("myModal2")) {
         document.getElementById("myModal2").style.visibility = "hidden";
         document.getElementById("myModal2").style.opacity = 0;
-
     }
 }
+
+document.getElementById("addNote").addEventListener("click", function() {
+    document.getElementById("inputeNote")
+})
