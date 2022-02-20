@@ -168,3 +168,9 @@ document.getElementById("showImage").addEventListener("mouseleave", function() {
     document.getElementById("rightSection").style.opacity = 1;
 
 });
+
+document.getElementById("addNote").addEventListener("click", function() {
+    document.getElementById("myModal2").style.visibility = "visible";
+    document.getElementById("myModal2").style.opacity = 1;
+
+})
