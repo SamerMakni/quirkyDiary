@@ -121,28 +121,29 @@ body {
     font-family: ThirdFont !important;
     /* border: 1px solid; */
     border-color: white;
-    min-height: 100px;
-    max-height: 100px;
-    max-width: 200px;
+    min-height: 130px;
+    max-height: 130px;
+    max-width: 50%;
     overflow-x: hidden;
     overflow-y: auto;
     text-align: justify;
     margin: 3px;
+    border: 1px solid;
 }
 
 #notes {
     font-family: ThirdFont !important;
     /* border: 1px solid; */
     border-color: white;
-    min-height: 100px;
-    max-height: 100px;
-    max-width: 200px;
+    min-height: 130px;
+    max-height: 130px;
+    max-width: 50%;
     overflow-x: hidden;
     overflow-y: auto;
     text-align: justify;
     margin: 3px;
     position: relative;
-    left: 50%;
+    border: 1px solid;
 }
 
 #reference {
@@ -194,10 +195,28 @@ body {
     font-family: ThirdFont;
     font-size: small;
     height: 20px;
-    width: 35px;
-    left: 165px;
+    width: fit-content;
+    left: 41%;
     position: relative;
     padding-bottom: 1px;
+    padding-right: 2px;
+    padding-left: 2px;
+    border: 1px solid;
+    /* border-color: white;
+    color: white; */
+    margin: 0%;
+}
+
+#addNote {
+    font-family: ThirdFont;
+    font-size: small;
+    height: 20px;
+    width: fit-content;
+    left: 41%;
+    position: relative;
+    padding-bottom: 1px;
+    padding-right: 2px;
+    padding-left: 2px;
     border: 1px solid;
     /* border-color: white;
     color: white; */
@@ -208,8 +227,25 @@ body {
     font-family: ThirdFont;
     font-size: small;
     height: 20px;
-    width: 35px;
+    width: fit-content;
     padding-bottom: 1px;
+    padding-right: 2px;
+    padding-left: 2px;
+    border: 1px solid;
+    border-color: white;
+    background-color: white;
+    color: black;
+    margin: 0%;
+}
+
+#addNote:hover {
+    font-family: ThirdFont;
+    font-size: small;
+    height: 20px;
+    width: fit-content;
+    padding-bottom: 1px;
+    padding-right: 2px;
+    padding-left: 2px;
     border: 1px solid;
     border-color: white;
     background-color: white;
@@ -281,9 +317,17 @@ body {
     text-decoration: underline;
 }
 
-#leftSection,
+#leftSection {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.4s, visibility 0.4s;
+}
+
 #rightSection {
     visibility: visible;
     opacity: 1;
     transition: opacity 0.4s, visibility 0.4s;
+    max-height: fit-content;
+    position: relative;
+    height: fit-content;
 }
