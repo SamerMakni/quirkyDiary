@@ -210,8 +210,8 @@ document.getElementById("acceptNote").addEventListener("click", function() {
         document.getElementById("myModal2").style.opacity = 0;
         i++;
         errr2 = false;
-
     }
+
 })
 
 
