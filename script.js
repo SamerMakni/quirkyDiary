@@ -143,6 +143,25 @@ document.getElementById("accept").addEventListener("click", function() {
         document.getElementById("myModal").style.visibility = "hidden";
         document.getElementById("myModal").style.opacity = 0;
         console.log(i);
+        let reqJson = {
+            taskContent: document.getElementById("input"),
+            user: "mySelf",
+            dateAdded: "33334"
+        }
+        fetch('http://localhost:3000/', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(reqJson),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     }
 });
 
@@ -256,3 +275,5 @@ document.getElementById("addNote").addEventListener("mouseleave", function() {
 //     document.getElementById("currentTime").innerHTML = display;
 //     setTimeout(displayClock, 1000);
 // }
+
+fetch()
