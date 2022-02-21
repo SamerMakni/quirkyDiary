@@ -214,7 +214,42 @@ document.getElementById("acceptNote").addEventListener("click", function() {
     }
 })
 
-// window.onload = displayClock();
+
+document.getElementById("tasks").addEventListener("mouseover", function() {
+    document.getElementById("add").style.visibility = " visible"
+    document.getElementById("add").style.opacity = 1;
+})
+document.getElementById("add").addEventListener("mouseover", function() {
+    document.getElementById("add").style.visibility = " visible"
+    document.getElementById("add").style.opacity = 1;
+})
+document.getElementById("tasks").addEventListener("mouseleave", function() {
+    document.getElementById("add").style.visibility = "hidden"
+    document.getElementById("add").style.opacity = 0;
+})
+document.getElementById("add").addEventListener("mouseleave", function() {
+    document.getElementById("add").style.visibility = "hidden"
+    document.getElementById("add").style.opacity = 0;
+})
+
+
+document.getElementById("notes").addEventListener("mouseover", function() {
+    document.getElementById("addNote").style.visibility = " visible"
+    document.getElementById("addNote").style.opacity = 1;
+})
+document.getElementById("addNote").addEventListener("mouseover", function() {
+    document.getElementById("addNote").style.visibility = " visible"
+    document.getElementById("addNote").style.opacity = 1;
+})
+document.getElementById("notes").addEventListener("mouseleave", function() {
+    document.getElementById("addNote").style.visibility = "hidden"
+    document.getElementById("addNote").style.opacity = 0;
+})
+document.getElementById("addNote").addEventListener("mouseleave", function() {
+        document.getElementById("addNote").style.visibility = "hidden"
+        document.getElementById("addNote").style.opacity = 0;
+    })
+    // window.onload = displayClock();
 
 // function displayClock() {
 //     var display = new Date().toLocaleTimeString();
