@@ -205,10 +205,19 @@ document.getElementById("acceptNote").addEventListener("click", function() {
         if (errr2 == false) document.getElementById("error2").innerHTML = "No title entered";
         errr2 = true;
     } else {
-        document.getElementById("notes").innerHTML += document.getElementById("inputNote").value + "<br>";
+        document.getElementById("notes").innerHTML += `<p id=${i} class="cursor-pointer"> ${noteValue}</p> <br>`;
         document.getElementById("myModal2").style.visibility = "hidden";
         document.getElementById("myModal2").style.opacity = 0;
+        i++;
         errr2 = false;
 
     }
 })
+
+// window.onload = displayClock();
+
+// function displayClock() {
+//     var display = new Date().toLocaleTimeString();
+//     document.getElementById("currentTime").innerHTML = display;
+//     setTimeout(displayClock, 1000);
+// }

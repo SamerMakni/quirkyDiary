@@ -173,7 +173,6 @@ body {
     overflow-y: auto;
     text-align: justify;
     margin: 3px;
-    border: 1px solid;
 }
 
 #notes {
@@ -188,7 +187,6 @@ body {
     text-align: justify;
     margin: 3px;
     position: relative;
-    border: 1px solid;
 }
 
 #reference {
