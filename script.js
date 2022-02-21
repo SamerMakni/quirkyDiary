@@ -144,9 +144,9 @@ document.getElementById("accept").addEventListener("click", function() {
         document.getElementById("myModal").style.opacity = 0;
         console.log(i);
         let reqJson = {
-            taskContent: document.getElementById("input"),
+            taskContent: document.getElementById("input").value,
             user: "mySelf",
-            dateAdded: "33334"
+            dateAdded: "210222"
         }
         fetch('http://localhost:3000/', {
                 method: 'POST', // or 'PUT'
@@ -276,4 +276,38 @@ document.getElementById("addNote").addEventListener("mouseleave", function() {
 //     setTimeout(displayClock, 1000);
 // }
 
-fetch()
+function tasksLoader() {
+    fetch("http://localhost:3000/Tasks", {
+            "method": "GET",
+            "headers": {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            data.data.map((item, index) => {
+                let labeler = document.createElement("br");
+                let label = document.createElement("label");
+                label.classList.add("form-check-label", "inline-block");
+                let inputer = document.createElement("input", );
+                inputer.setAttribute("type", "checkbox");
+                let spaner = document.createElement("span");
+                spaner.innerText = item.taskContent;
+                inputer.classList.add("form-check-input", "appearance-none", "h-3", "w-3", "border", "border-gray-300", "rounded-sm", "bg-gray-300", "checked:bg-black", "checked:border-black", "focus:outline-none", "transition", "duration-200", "mt-1", "align-top", "bg-no-repeat", "bg-center", "bg-contain", "float-left", "mr-2", "cursor-pointer");
+                label.appendChild(inputer);
+                label.appendChild(spaner);
+                document.getElementById("tasks").appendChild(label);
+                document.getElementById("tasks").append(labeler);
+            })
+
+        })
+        .catch(err => {
+            console.error(err);
+        });
+
+
+
+
+}
+tasksLoader();
