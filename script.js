@@ -8,6 +8,10 @@ function colorizer(str) {
 
 i = 10;
 
+function statueChanger(x) {
+    console.log(x);
+}
+
 
 function dateLoader() {
     let dt = new Date();
@@ -166,6 +170,7 @@ document.getElementById("accept").addEventListener("click", function() {
             })
             .then(response => response.json())
             .then(data => {
+                inputer.setAttribute("id", `${data.insertedId}`);
                 console.log('Success:', data);
             })
             .catch((error) => {
@@ -303,6 +308,7 @@ function tasksLoader() {
                 let inputer = document.createElement("input", );
                 inputer.setAttribute("type", "checkbox");
                 inputer.setAttribute("id", `${item._id}`);
+                inputer.addEventListener("click", function() { console.log(item._id); })
                 if (item.statue == 1) inputer.setAttribute("checked", "true");
                 let spaner = document.createElement("span");
                 spaner.innerText = item.taskContent;

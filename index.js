@@ -96,8 +96,10 @@ app.post('/', async(req, res) => {
         // res.send(req.params.id);
         // console.log(JSON.parse(payLoad));
         // res.send("f");
-        await client.db("diary").collection("tasks").insertOne(JSON.parse(payLoad));
-        res.status(201).send("Success");
+        await client.db("diary").collection("tasks").insertOne(JSON.parse(payLoad)).then((x) => {
+
+            res.status(201).send(x);
+        }).catch(() => { res.status(422).send("erreur") });
 
     } catch (error) {
         res.send(error);
