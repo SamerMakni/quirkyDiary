@@ -114,6 +114,13 @@ window.onclick = function(event) {
 // }
 
 
+function getThisDate() {
+    const dateObject = new Date();
+    const year = dateObject.getFullYear();
+    const month = dateObject.getMonth() + 1;
+    const day = String(dateObject.getDate()).padStart(2, '0');
+    return `${day}${month}${year}`
+}
 
 let errr = false;
 let errr2 = false;
@@ -143,10 +150,12 @@ document.getElementById("accept").addEventListener("click", function() {
         document.getElementById("myModal").style.visibility = "hidden";
         document.getElementById("myModal").style.opacity = 0;
         console.log(i);
+        let thisDate = getThisDate();
+        console.log(thisDate);
         let reqJson = {
             taskContent: document.getElementById("input").value,
             user: "mySelf",
-            dateAdded: "210222"
+            dateAdded: thisDate + ""
         }
         fetch('http://localhost:3000/', {
                 method: 'POST', // or 'PUT'
@@ -289,9 +298,12 @@ function tasksLoader() {
             data.data.map((item, index) => {
                 let labeler = document.createElement("br");
                 let label = document.createElement("label");
+                label.classList.add("taskgoose");
                 label.classList.add("form-check-label", "inline-block");
                 let inputer = document.createElement("input", );
                 inputer.setAttribute("type", "checkbox");
+                inputer.setAttribute("id", `${item._id}`);
+                if (item.statue == 1) inputer.setAttribute("checked", "true");
                 let spaner = document.createElement("span");
                 spaner.innerText = item.taskContent;
                 inputer.classList.add("form-check-input", "appearance-none", "h-3", "w-3", "border", "border-gray-300", "rounded-sm", "bg-gray-300", "checked:bg-black", "checked:border-black", "focus:outline-none", "transition", "duration-200", "mt-1", "align-top", "bg-no-repeat", "bg-center", "bg-contain", "float-left", "mr-2", "cursor-pointer");
@@ -299,7 +311,13 @@ function tasksLoader() {
                 label.appendChild(spaner);
                 document.getElementById("tasks").appendChild(label);
                 document.getElementById("tasks").append(labeler);
+
             })
+            let tasksEventListen = document.getElementsByClassName("taskgoose");
+            // tasksEventListen.map((current, indx) => {
+            //     current.addEventListener("click", console.log(current.id));
+            // })
+            console.log(tasksEventListen);
 
         })
         .catch(err => {
