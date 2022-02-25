@@ -172,6 +172,8 @@ document.getElementById("accept").addEventListener("click", function() {
             .then(data => {
                 inputer.setAttribute("id", `${data.insertedId}`);
                 console.log('Success:', data);
+                inputer.addEventListener("click", function() { console.log(data.insertedId); })
+
             })
             .catch((error) => {
                 console.error('Error:', error);
