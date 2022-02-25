@@ -12,6 +12,47 @@ function statueChanger(x) {
     console.log(x);
 }
 
+setTimeout(() => {
+    // Initialize the echarts instance based on the prepared dom
+    var myChart = echarts.init(document.getElementById('visRate'));
+
+    // Specify the configuration items and data for the chart
+
+    option = {
+        textStyle: {
+            color: '#fff',
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+        },
+        xAxis: {
+            type: 'category',
+            data: ['', '', '', '', '', '', ''],
+            nameTextStyle: {
+                color: "rgba(255, 255, 255, 1)"
+            }
+        },
+        yAxis: {
+            type: 'value',
+            nameTextStyle: {
+                color: "rgba(255, 255, 255, 1)"
+            }
+        },
+        color: ['#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000'],
+        animationDuration: 1800,
+        series: [{
+            data: [3, 9, 1, 4, 9, 3, 10],
+            type: 'line',
+            smooth: true
+        }]
+    };
+    // Display the chart using the configuration items and data just specified.
+    myChart.setOption(option);
+
+
+}, 1600);
+
+
+
 
 function dateLoader() {
     let dt = new Date();
@@ -20,15 +61,16 @@ function dateLoader() {
 }
 
 function quoteLoader() {
-    let apiUrl = 'https://quotes.rest/qod?category=art&language=en';
+    let apiUrl = 'https://api.quotable.io/random';
     fetch(apiUrl).then(response => {
+        // console.log(response);
         return response.json();
     }).then(data => {
-        // console.log(data.contents.quotes[0].quote);
-        document.getElementById("quote").innerHTML = '"' + data.contents.quotes[0].quote + '"';
+        console.log(data);
+        document.getElementById("quote").innerHTML = `"${data.content}" <br> -${data.author}`;
 
     }).catch(err => {
-        console.log("API Error.")
+        console.log(err)
     });
 }
 

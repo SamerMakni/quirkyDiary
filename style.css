@@ -420,3 +420,20 @@ body {
 #noteDescription:focus {
     outline: none !important;
 }
+
+#rating {
+    position: absolute;
+    left: 60%;
+    top: 2%;
+    min-height: 300px;
+    min-width: 300px;
+}
+
+#visRate {
+    position: absolute;
+    right: 18%;
+    bottom: 0%;
+    top: 0%;
+    min-height: 200px;
+    min-width: 240px;
+}
