@@ -203,7 +203,7 @@ document.getElementById("accept").addEventListener("click", function() {
             user: "mySelf",
             dateAdded: thisDate + ""
         }
-        fetch('http://localhost:3000/', {
+        fetch('http://localhost:3000/api/v1/tasks/', {
                 method: 'POST', // or 'PUT'
                 headers: {
                     'Content-Type': 'application/json',
@@ -214,7 +214,23 @@ document.getElementById("accept").addEventListener("click", function() {
             .then(data => {
                 inputer.setAttribute("id", `${data.insertedId}`);
                 console.log('Success:', data);
-                inputer.addEventListener("click", function() { console.log(data.insertedId); })
+                inputer.addEventListener("click", function() {
+                    let spayload;
+                    if (inputer.checked == true) {
+                        spayload = { checked: true };
+                    } else {
+                        spayload = { checked: false };
+                    }
+
+
+                    fetch(`http://localhost:3000/api/v1/tasks/${data.insertedId}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(spayload),
+                    }).then(response => response.json()).then(data => { console.log(data); }).catch((error) => { console.log(error); })
+                });
 
             })
             .catch((error) => {
@@ -335,7 +351,7 @@ document.getElementById("addNote").addEventListener("mouseleave", function() {
 // }
 
 function tasksLoader() {
-    fetch("http://localhost:3000/Tasks", {
+    fetch("http://localhost:3000/api/v1/tasks/", {
             "method": "GET",
             "headers": {
                 'Content-Type': 'application/json',
@@ -352,7 +368,27 @@ function tasksLoader() {
                 let inputer = document.createElement("input", );
                 inputer.setAttribute("type", "checkbox");
                 inputer.setAttribute("id", `${item._id}`);
-                inputer.addEventListener("click", function() { console.log(item._id); })
+                if (item.checked)
+                    inputer.checked = true;
+                else
+                    inputer.checked = false;
+                inputer.addEventListener("click", function() {
+                    let spayload;
+                    if (inputer.checked == true) {
+                        spayload = { checked: true };
+                    } else {
+                        spayload = { checked: false };
+                    }
+
+
+                    fetch(`http://localhost:3000/api/v1/tasks/${item._id}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(spayload),
+                    }).then(response => response.json()).then(data => { console.log(data); }).catch((error) => { console.log(error); })
+                })
                 if (item.statue == 1) inputer.setAttribute("checked", "true");
                 let spaner = document.createElement("span");
                 spaner.innerText = item.taskContent;
@@ -378,4 +414,6 @@ function tasksLoader() {
 
 
 }
+
+
 tasksLoader();
