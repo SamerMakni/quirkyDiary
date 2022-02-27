@@ -294,15 +294,34 @@ document.body.onclick = function(event) {
 
 document.getElementById("acceptNote").addEventListener("click", function() {
     let noteValue = document.getElementById("inputNote").value;
+    let thisDate = getThisDate();
+    let reqJson = {
+        dateAdded: thisDate + "",
+        title: document.getElementById("inputNote").value,
+        Content: document.getElementById("noteDescription").value
+    }
     if (noteValue.length == 0) {
         if (errr2 == false) document.getElementById("error2").innerHTML = "No title entered";
         errr2 = true;
     } else {
-        document.getElementById("notes").innerHTML += `<p id=${i} class="cursor-pointer"> ${noteValue}</p> <br>`;
-        document.getElementById("myModal2").style.visibility = "hidden";
-        document.getElementById("myModal2").style.opacity = 0;
-        i++;
-        errr2 = false;
+
+        fetch('http://localhost:3000/api/v1/notes/', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(reqJson),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                document.getElementById("notes").innerHTML += `<p id=${data._id} class="cursor-pointer"> ${data.title}}</p> <br>`;
+                document.getElementById("myModal2").style.visibility = "hidden";
+                document.getElementById("myModal2").style.opacity = 0;
+                i++;
+                errr2 = false;
+            })
+
     }
 
 })
