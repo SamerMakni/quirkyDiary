@@ -6,7 +6,7 @@ function colorizer(str) {
     return intensity > 168 ? true : false;
 }
 
-i = 10;
+// i = 10;
 
 function statueChanger(x) {
     console.log(x);
