@@ -1,3 +1,5 @@
+// const { response } = require("express");
+
 function colorizer(str) {
     let red = parseInt(str.substr(1, 2), 16);
     let green = parseInt(str.substr(3, 2), 16);
@@ -6,7 +8,7 @@ function colorizer(str) {
     return intensity > 168 ? true : false;
 }
 
-// i = 10;
+i = 10;
 
 function statueChanger(x) {
     console.log(x);
@@ -314,12 +316,19 @@ document.getElementById("acceptNote").addEventListener("click", function() {
             })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
-                document.getElementById("notes").innerHTML += `<p id=${data._id} class="cursor-pointer"> ${data.title}}</p> <br>`;
-                document.getElementById("myModal2").style.visibility = "hidden";
-                document.getElementById("myModal2").style.opacity = 0;
-                i++;
-                errr2 = false;
+                fetch(`http://localhost:3000/api/v1/notes/${data.insertedId}`, {
+                    "method": "GET",
+                    "headers": {
+                        'Content-Type': 'application/json',
+                    }
+                }).then(response => response.json()).then(data => {
+                    console.log('Success:', data);
+                    document.getElementById("notes").innerHTML += `<p id=${data._id} class="cursor-pointer"> ${data.title}}</p> <br>`;
+                    document.getElementById("myModal2").style.visibility = "hidden";
+                    document.getElementById("myModal2").style.opacity = 0;
+                    i++;
+                    errr2 = false;
+                })
             })
 
     }
