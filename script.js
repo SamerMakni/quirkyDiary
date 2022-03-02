@@ -336,6 +336,22 @@ document.getElementById("acceptNote").addEventListener("click", function() {
 })
 
 
+function notesLoader() {
+    fetch(`http://localhost:3000/api/v1/notes/`, {
+        "method": "GET",
+        "headers": {
+            'Content-Type': 'application/json',
+        }
+    }).then(response => response.json()).then(data => {
+        console.log('Success:', data);
+        data.data.map((item, index) => {
+            document.getElementById("notes").innerHTML += `<p id=${item._id} class="cursor-pointer"> ${item.title}}</p> <br>`;
+
+        })
+    }).catch((error) => { console.log(error); })
+}
+
+
 document.getElementById("tasks").addEventListener("mouseover", function() {
     document.getElementById("add").style.visibility = " visible"
     document.getElementById("add").style.opacity = 1;
@@ -445,3 +461,4 @@ function tasksLoader() {
 
 
 tasksLoader();
+notesLoader();
