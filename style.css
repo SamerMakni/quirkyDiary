@@ -45,6 +45,34 @@
     src: url(LinuxLibertineDisplay-23pl.ttf);
 }
 
+#myModal3 {
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(100, 100, 1);
+    background-color: rgba(26, 24, 24, 0.6);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+#modalContent3 {
+    font-family: ThirdFont;
+    margin: auto;
+    padding: 10px;
+    border: 0px solid #888;
+    width: 28%;
+    height: fit-content;
+    overflow-y: hidden;
+    max-height: fit-content;
+    overflow: hidden;
+}
+
 #myModal2 {
     position: fixed;
     z-index: 1;

@@ -107,8 +107,10 @@ function backgroundLoader() {
             document.getElementById("rightSection").classList.add("text-white");
         }
         document.getElementById("modalContent").classList.add("bg-[" + data.items[random].colors[3] + "]");
+        document.getElementById("modalContent2").classList.add("bg-[" + data.items[random].colors[3] + "]");
         document.getElementById("input").classList.add("bg-[" + data.items[random].colors[3] + "]");
         document.getElementById("modalContent2").classList.add("bg-[" + data.items[random].colors[3] + "]");
+        document.getElementById("modalContent3").classList.add("bg-[" + data.items[random].colors[3] + "]");
         document.getElementById("noteDescription").classList.add("bg-[" + data.items[random].colors[3] + "]");
         document.getElementById("inputNote").classList.add("bg-[" + data.items[random].colors[3] + "]");
 
@@ -122,6 +124,7 @@ function backgroundLoader() {
             document.getElementById("noteDescription").classList.add("text-white");
             document.getElementById("acceptNote").classList.add("text-white");
             document.getElementById("myModal2").classList.add("text-white");
+            document.getElementById("myModal3").classList.add("text-white");
 
 
         }
@@ -145,6 +148,14 @@ window.onclick = function(event) {
     if (event.target == document.getElementById("myModal")) {
         document.getElementById("myModal").style.visibility = "hidden";
         document.getElementById("myModal").style.opacity = 0;
+
+    }
+}
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById("myModal3")) {
+        document.getElementById("myModal3").style.visibility = "hidden";
+        document.getElementById("myModal3").style.opacity = 0;
 
     }
 }
@@ -323,11 +334,21 @@ document.getElementById("acceptNote").addEventListener("click", function() {
                     }
                 }).then(response => response.json()).then(data => {
                     console.log('Success:', data);
-                    document.getElementById("notes").innerHTML += `<p id=${data._id} class="cursor-pointer"> ${data.title}}</p> <br>`;
+                    document.getElementById("notes").innerHTML += `<p id=${data._id} class="cursor-pointer"> ${data.title}</p> <br>`;
                     document.getElementById("myModal2").style.visibility = "hidden";
                     document.getElementById("myModal2").style.opacity = 0;
-                    i++;
-                    errr2 = false;
+                    document.getElementById(data._id).addEventListener("click", function() {
+                        document.getElementById("myModal3").style.visibility = "visible";
+                        document.getElementById("myModal3").style.opacity = 1;
+                        fetch(`http://localhost:3000/api/v1/notes/${data._id}`, {
+                            "method": "GET",
+                            "headers": {
+                                'Content-Type': 'application/json',
+                            }
+                        }).then(response => response.json()).then(data => {
+
+                        }).catch((error) => { console.log(error); })
+                    })
                 })
             })
 
@@ -346,9 +367,21 @@ function notesLoader() {
         console.log('Success:', data);
         data.data.map((item, index) => {
             document.getElementById("notes").innerHTML += `<p id=${item._id} class="cursor-pointer"> ${item.title}}</p> <br>`;
+            document.getElementById(item._id).addEventListener("click", function() {
+                document.getElementById("myModal3").style.visibility = "visible";
+                document.getElementById("myModal3").style.opacity = 1;
+                // fetch(`http://localhost:3000/api/v1/notes/${item._id}`, {
+                //     "method": "GET",
+                //     "headers": {
+                //         'Content-Type': 'application/json',
+                //     }
+                // }).then(response => response.json()).then(data => {
+
+                // }).catch((error) => { console.log(error); })
+            })
 
         })
-    }).catch((error) => { console.log(error); })
+    })
 }
 
 
