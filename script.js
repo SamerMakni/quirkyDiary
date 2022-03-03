@@ -366,21 +366,38 @@ function notesLoader() {
     }).then(response => response.json()).then(data => {
         console.log('Success:', data);
         data.data.map((item, index) => {
-            document.getElementById("notes").innerHTML += `<p id=${item._id} class="cursor-pointer"> ${item.title}}</p> <br>`;
+            document.getElementById("notes").innerHTML += `<p id=${item._id} class="cursor-pointer"> ${item.title}</p> <br>`;
+            // document.getElementById(item._id).addEventListener("click", function() {
+            //     alert("puee")
+            //         // document.getElementById("myModal3").style.visibility = "visible";
+            //         // document.getElementById("myModal3").style.opacity = 1;
+            //         // fetch(`http://localhost:3000/api/v1/notes/${item._id}`, {
+            //         //     "method": "GET",
+            //         //     "headers": {
+            //         //         'Content-Type': 'application/json',
+            //         //     }
+            //         // }).then(response => response.json()).then(data => {
+
+            //     // }).catch((error) => { console.log(error); })
+            // })
+        });
+        data.data.map((item, index) => {
+            // document.getElementById("notes").innerHTML += `<p id=${item._id} class="cursor-pointer"> ${item.title}</p> <br>`;
             document.getElementById(item._id).addEventListener("click", function() {
                 document.getElementById("myModal3").style.visibility = "visible";
                 document.getElementById("myModal3").style.opacity = 1;
-                // fetch(`http://localhost:3000/api/v1/notes/${item._id}`, {
-                //     "method": "GET",
-                //     "headers": {
-                //         'Content-Type': 'application/json',
-                //     }
-                // }).then(response => response.json()).then(data => {
-
-                // }).catch((error) => { console.log(error); })
+                fetch(`http://localhost:3000/api/v1/notes/${item._id}`, {
+                    "method": "GET",
+                    "headers": {
+                        'Content-Type': 'application/json',
+                    }
+                }).then(response => response.json()).then(data => {
+                    console.log(data);
+                    document.getElementById("modalContent3").innerHTML = `<p> ${data.Content} </p>`
+                }).catch((error) => { console.log(error); })
             })
 
-        })
+        });
     })
 }
 
