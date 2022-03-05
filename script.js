@@ -306,6 +306,7 @@ document.body.onclick = function(event) {
 }
 
 document.getElementById("acceptNote").addEventListener("click", function() {
+    let idclick = 0;
     let noteValue = document.getElementById("inputNote").value;
     let thisDate = getThisDate();
     let reqJson = {
@@ -317,6 +318,8 @@ document.getElementById("acceptNote").addEventListener("click", function() {
         if (errr2 == false) document.getElementById("error2").innerHTML = "No title entered";
         errr2 = true;
     } else {
+        document.getElementById("myModal2").style.visibility = "hidden";
+        document.getElementById("myModal2").style.opacity = 0;
 
         fetch('http://localhost:3000/api/v1/notes/', {
                 method: 'POST', // or 'PUT'
@@ -327,6 +330,7 @@ document.getElementById("acceptNote").addEventListener("click", function() {
             })
             .then(response => response.json())
             .then(data => {
+                idclick = data.insertedId;
                 fetch(`http://localhost:3000/api/v1/notes/${data.insertedId}`, {
                     "method": "GET",
                     "headers": {
@@ -334,25 +338,26 @@ document.getElementById("acceptNote").addEventListener("click", function() {
                     }
                 }).then(response => response.json()).then(data => {
                     console.log('Success:', data);
-                    document.getElementById("notes").innerHTML += `<p id=${data._id} class="cursor-pointer"> ${data.title}</p> <br>`;
-                    document.getElementById("myModal2").style.visibility = "hidden";
-                    document.getElementById("myModal2").style.opacity = 0;
-                    document.getElementById(data._id).addEventListener("click", function() {
-                        document.getElementById("myModal3").style.visibility = "visible";
-                        document.getElementById("myModal3").style.opacity = 1;
-                        fetch(`http://localhost:3000/api/v1/notes/${data._id}`, {
-                            "method": "GET",
-                            "headers": {
-                                'Content-Type': 'application/json',
-                            }
-                        }).then(response => response.json()).then(data => {
+                }).catch((error) => { console.log(error); })
+            }).catch((error) => { console.log(error); })
+            // document.getElementById(idclick).addEventListener("click", function() {
+            //     document.getElementById("myModal3").style.visibility = "visible";
+            //     document.getElementById("myModal3").style.opacity = 1;
+            //     fetch(`http://localhost:3000/api/v1/notes/${idclick}`, {
+            //         "method": "GET",
+            //         "headers": {
+            //             'Content-Type': 'application/json',
+            //         }   
+            //     }).then(response => response.json()).then(data => {
 
-                        }).catch((error) => { console.log(error); })
-                    })
-                })
-            })
+        //         document.getElementById("modalContent3").innerHTML = `<p> ${data.Content} </p>`
+
+        //     }).catch((error) => { console.log(error); })
+        // })
 
     }
+    document.getElementById("notes").innerHTML = '';
+    notesLoader();
 
 })
 
@@ -367,23 +372,11 @@ function notesLoader() {
         console.log('Success:', data);
         data.data.map((item, index) => {
             document.getElementById("notes").innerHTML += `<p id=${item._id} class="cursor-pointer"> ${item.title}</p> <br>`;
-            // document.getElementById(item._id).addEventListener("click", function() {
-            //     alert("puee")
-            //         // document.getElementById("myModal3").style.visibility = "visible";
-            //         // document.getElementById("myModal3").style.opacity = 1;
-            //         // fetch(`http://localhost:3000/api/v1/notes/${item._id}`, {
-            //         //     "method": "GET",
-            //         //     "headers": {
-            //         //         'Content-Type': 'application/json',
-            //         //     }
-            //         // }).then(response => response.json()).then(data => {
-
-            //     // }).catch((error) => { console.log(error); })
-            // })
         });
         data.data.map((item, index) => {
             // document.getElementById("notes").innerHTML += `<p id=${item._id} class="cursor-pointer"> ${item.title}</p> <br>`;
             document.getElementById(item._id).addEventListener("click", function() {
+                console.log("hi");
                 document.getElementById("myModal3").style.visibility = "visible";
                 document.getElementById("myModal3").style.opacity = 1;
                 fetch(`http://localhost:3000/api/v1/notes/${item._id}`, {
