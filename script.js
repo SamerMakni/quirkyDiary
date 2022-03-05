@@ -14,6 +14,7 @@ function statueChanger(x) {
     console.log(x);
 }
 
+
 setTimeout(() => {
     // Initialize the echarts instance based on the prepared dom
     var myChart = echarts.init(document.getElementById('visRate'));
@@ -155,13 +156,6 @@ document.getElementById("add").addEventListener("click", function() {
     errr = false;
 })
 
-window.onclick = function(event) {
-    if (event.target == document.getElementById("myModal")) {
-        document.getElementById("myModal").style.visibility = "hidden";
-        document.getElementById("myModal").style.opacity = 0;
-
-    }
-}
 
 window.onclick = function(event) {
     if (event.target == document.getElementById("myModal3")) {
@@ -516,6 +510,14 @@ function tasksLoader() {
 
 
 }
+window.onclick = function(event) {
+    if (event.target == document.getElementById("myModal")) {
+        document.getElementById("myModal").style.visibility = "hidden";
+        document.getElementById("myModal").style.opacity = 0;
+
+    }
+}
+
 
 
 tasksLoader();
