@@ -156,6 +156,10 @@ window.onclick = function(event) {
     if (event.target == document.getElementById("myModal3")) {
         document.getElementById("myModal3").style.visibility = "hidden";
         document.getElementById("myModal3").style.opacity = 0;
+        setTimeout(() => {
+            document.getElementById("modalContent3").innerHTML = 'Loading';
+        }, 150);
+
 
     }
 }
