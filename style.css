@@ -60,6 +60,49 @@
     cursor: pointer;
 }
 
+#dayStatus1 {
+    font-family: ThirdFont;
+    font-size: x-small;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    bottom: 51%;
+    color: #252525;
+}
+
+#dayAccept {
+    font-family: ThirdFont;
+    font-size: x-small;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    left: 92%;
+    bottom: 36%;
+    color: #252525;
+}
+
+#dayAccept:hover {
+    font-family: ThirdFont;
+    font-size: x-small;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    left: 92%;
+    bottom: 36%;
+    color: #8a8a8a;
+}
+
+#dayStatus2 {
+    font-family: ThirdFont;
+    font-size: x-small;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    left: 86%;
+    bottom: 51%;
+    color: #252525;
+}
+
 @font-face {
     font-family: Mainfont;
     src: url(font.otf);
