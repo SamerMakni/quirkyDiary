@@ -27,18 +27,29 @@ setTimeout(() => {
             fontWeight: 'normal',
         },
         xAxis: {
+            show: false,
             type: 'category',
             data: ['', '', '', '', '', '', ''],
             nameTextStyle: {
                 color: "rgba(255, 255, 255, 1)"
+            },
+            axisLine: {
+                show: false,
             }
         },
         yAxis: {
+            show: false,
             type: 'value',
             nameTextStyle: {
                 color: "rgba(255, 255, 255, 1)"
+            },
+
+            axisLine: {
+                show: false,
             }
         },
+
+
         color: ['#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000'],
         animationDuration: 1800,
         series: [{
